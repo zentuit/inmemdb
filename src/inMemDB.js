@@ -1,7 +1,7 @@
 
 
-const VALUE_INDEX = 0
-const ACTIVE_INDEX = 1
+// const VALUE_INDEX = 0
+// const ACTIVE_INDEX = 1
 const ACTIVE = true
 const DELETED = false
 
@@ -40,11 +40,11 @@ class InMemDB {
         console.log(this.transactions[this.last()])
         console.log('...........')
         const [keyDB, valueDB] = this.transactions[this.last()]
-        keyDB.set(key, [value, ACTIVE])
+        keyDB.set(key, { value, active:ACTIVE })
         // then add value
         const listOfKeys = this._getFullRecord(value, USE_VALUE_DB) || []
         if (listOfKeys.indexOf(key) < 1) {
-            listOfKeys.push([key, ACTIVE])
+            listOfKeys.push({ key, active: ACTIVE })
         }
         valueDB.set(value, listOfKeys)
         console.log(this.transactions)
@@ -54,29 +54,26 @@ class InMemDB {
 
     get(key) {
         const result = this._getFullRecord(key)
-        const x = result && result[ACTIVE_INDEX] ? result[VALUE_INDEX] : null
-        // console.log('result: ' + result)
-        // console.log(result)
-        // console.log('result[active]: ' + result[RESULT_ACTIVE_INDEX] + " :: " + result[RESULT_VALUE_INDEX] + ' --- ' + x)
+        console.log('result: ' + result)
 
-        return x
+        return result && result.active ? result.value : null
     }
 
     remove(key) {
         // set deleted flag for value in keydb
         const result = this._getFullRecord(key)
         if (result) {
-            result[ACTIVE_INDEX] = false
+            result.active = false
             // set deleted flag for key in valuedb
-            console.log('key ==> ' + result[VALUE_INDEX])
-            const listOfKeys = this._getFullRecord(result[VALUE_INDEX], USE_VALUE_DB)
+            console.log('key ==> ' + result.active)
+            const listOfKeys = this._getFullRecord(result.value, USE_VALUE_DB)
             console.log('listOfKeys ==> ' + listOfKeys)
-            const keyIndex = listOfKeys.findIndex((element) => element[VALUE_INDEX] == key)
+            const keyIndex = listOfKeys.findIndex((element) => element.key == key)
             console.log('keyIndex ==> ' + keyIndex)
             if (keyIndex < 0) {
                 throw new DatabaseError('Corrupted key/value matching')
             }
-            listOfKeys[keyIndex] = [key, DELETED]
+            listOfKeys[keyIndex] = { key, active: DELETED }
         }
     }
 
@@ -108,7 +105,7 @@ class InMemDB {
             return 0
         }
 
-        const activeKeys = result.filter(([key, isActive]) => isActive) || []
+        const activeKeys = result.filter(({ key, active }) => active) || []
         console.log(' ... count: activeKeys = ' + activeKeys)
         return activeKeys.length
     }
