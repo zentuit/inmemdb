@@ -1,10 +1,11 @@
 
-const KEY_INDEX = 0
-const VALUE_INDEX = 1
 
+const VALUE_INDEX = 0
 const ACTIVE_INDEX = 1
 const ACTIVE = true
 const DELETED = false
+
+const USE_VALUE_DB = true
 
 class InMemDB {
 
@@ -41,7 +42,7 @@ class InMemDB {
         const [keyDB, valueDB] = this.transactions[this.last()]
         keyDB.set(key, [value, ACTIVE])
         // then add value
-        const listOfKeys = valueDB.get(key) || []
+        const listOfKeys = this._getFullRecord(value, USE_VALUE_DB) || []
         if (listOfKeys.indexOf(key) < 1) {
             listOfKeys.push([key, ACTIVE])
         }
@@ -52,10 +53,8 @@ class InMemDB {
     }
 
     get(key) {
-        const RESULT_ACTIVE_INDEX = ACTIVE_INDEX
-        const RESULT_VALUE_INDEX = 0
         const result = this._getFullRecord(key)
-        const x = result && result[RESULT_ACTIVE_INDEX] ? result[RESULT_VALUE_INDEX] : null
+        const x = result && result[ACTIVE_INDEX] ? result[VALUE_INDEX] : null
         // console.log('result: ' + result)
         // console.log(result)
         // console.log('result[active]: ' + result[RESULT_ACTIVE_INDEX] + " :: " + result[RESULT_VALUE_INDEX] + ' --- ' + x)
@@ -64,9 +63,20 @@ class InMemDB {
     }
 
     remove(key) {
+        // set deleted flag for value in keydb
         const result = this._getFullRecord(key)
         if (result) {
             result[ACTIVE_INDEX] = false
+            // set deleted flag for key in valuedb
+            console.log('key ==> ' + result[VALUE_INDEX])
+            const listOfKeys = this._getFullRecord(result[VALUE_INDEX], USE_VALUE_DB)
+            console.log('listOfKeys ==> ' + listOfKeys)
+            const keyIndex = listOfKeys.findIndex((element) => element[VALUE_INDEX] == key)
+            console.log('keyIndex ==> ' + keyIndex)
+            if (keyIndex < 0) {
+                throw new DatabaseError('Corrupted key/value matching')
+            }
+            listOfKeys[keyIndex] = [key, DELETED]
         }
     }
 
@@ -92,24 +102,33 @@ class InMemDB {
     }
 
     count(value) {
+        const result = this._getFullRecord(value, USE_VALUE_DB)
+        console.log(result)
+        if (!result) {
+            return 0
+        }
 
+        const activeKeys = result.filter(([key, isActive]) => isActive) || []
+        console.log(' ... count: activeKeys = ' + activeKeys)
+        return activeKeys.length
     }
 
 
-    _getFullRecord(key) {
+    _getFullRecord(key, useValueDB = false) {
         // work through transactions; the transactions won't have the
         // entire dataset so we'll first check the current transaction
         // for an value then check if its ACTIVE or DELETED
         // otherwise go to next transaction and repeat
-        console.log('-- getting ' + key)
+        console.log('-- getting ' + key + ' :: using value db? ' + useValueDB)
         console.log(this.transactions)
         let result = null
         console.log(this.transactions.length - 1)
         for (let index = this.transactions.length - 1; index >= 0; index--) {
             console.log('index: ' + index)
             const [keyDB, valueDB] = this.transactions[index]
-            console.log({ keyDB, valueDB })
-            const value = keyDB.get(key)
+            console.log(keyDB)
+            console.log(valueDB)
+            const value = useValueDB ? valueDB.get(key) : keyDB.get(key)
             console.log(value)
             if (value) {
                 result = value
@@ -127,9 +146,16 @@ class TransactionError extends Error {
     }
 }
 
+class DatabaseError extends Error {
+    constructor(message) {
+        super(message)
+    }
+}
+
 const TRANSACTION_NOT_FOUND = new TransactionError('TRANSACTION NOT FOUND')
 
 module.exports = {
     InMemDB,
-    TransactionError
+    TransactionError,
+    DatabaseError,
 }
