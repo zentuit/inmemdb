@@ -1,7 +1,5 @@
+const VALUEDB_INDEX = 1
 
-
-// const VALUE_INDEX = 0
-// const ACTIVE_INDEX = 1
 const ACTIVE = true
 const DELETED = false
 
@@ -20,7 +18,7 @@ class InMemDB {
         // use a value Map to make Count sub O(logn)
         this.valueMap = new Map()
         this.transactions = [
-            [this.keyMap, this.valueMap]
+            { keyDB: this.keyMap, valueDB: this.valueMap }
         ]
     }
 
@@ -39,7 +37,7 @@ class InMemDB {
         console.log(this.transactions)
         console.log(this.transactions[this.last()])
         console.log('...........')
-        const [keyDB, valueDB] = this.transactions[this.last()]
+        const { keyDB, valueDB } = this.transactions[this.last()]
         keyDB.set(key, { value, active:ACTIVE })
         // then add value
         const listOfKeys = this._getFullRecord(value, USE_VALUE_DB) || []
@@ -48,7 +46,8 @@ class InMemDB {
         }
         valueDB.set(value, listOfKeys)
         console.log(this.transactions)
-        console.log(this.transactions[this.last()])
+        console.log(this.transactions[this.last()].keyDB)
+        console.log(this.transactions[this.last()].valueDB)
         console.log('..... %%%%%%')
     }
 
@@ -78,14 +77,14 @@ class InMemDB {
     }
 
     startTransaction() {
-        this.transactions.push([new Map(), new Map()])
+        this.transactions.push({ keyDB: new Map(), valueDB: new Map() })
 
     }
 
     commitTransaction() {
         // work through transactions
         for (let index = this.transactions.length - 1; index >= 0; index--) {
-            const [keyDB, valueDB, deleteList] = this.transactions[index]
+            const {keyDB, valueDB} = this.transactions[index]
             
         }
     }
@@ -122,7 +121,7 @@ class InMemDB {
         console.log(this.transactions.length - 1)
         for (let index = this.transactions.length - 1; index >= 0; index--) {
             console.log('index: ' + index)
-            const [keyDB, valueDB] = this.transactions[index]
+            const { keyDB, valueDB } = this.transactions[index]
             console.log(keyDB)
             console.log(valueDB)
             const value = useValueDB ? valueDB.get(key) : keyDB.get(key)
