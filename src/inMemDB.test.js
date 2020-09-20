@@ -32,3 +32,9 @@ test('get key with multiple entries db', () => {
     console.log('----> ' + db.get('b'))
     expect(db.get('b')).toEqual(4)
 })
+
+test('rollback when not in transaction throws error', () => {
+    expect(() => {
+        db.rollbackTransaction()
+    }).toThrow(inMemDB.TransactionError)
+})

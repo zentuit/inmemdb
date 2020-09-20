@@ -79,7 +79,9 @@ class InMemDB {
     }
 
     rollbackTransaction() {
-
+        if (!this.isInTransaction()) {
+            throw TRANSACTION_NOT_FOUND
+        }
     }
 
     count(value) {
@@ -88,6 +90,15 @@ class InMemDB {
 
 }
 
+class TransactionError extends Error {
+    constructor(message) {
+        super(message)
+    }
+}
+
+const TRANSACTION_NOT_FOUND = new TransactionError('TRANSACTION NOT FOUND')
+
 module.exports = {
     InMemDB,
+    TransactionError
 }
