@@ -1,0 +1,16 @@
+HELP.md
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+
+### VS Code ###
+.vscode/
+
+### various ###
+*.zip
+.bin
+.misc
