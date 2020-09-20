@@ -19,3 +19,16 @@ test('set of empty db', () => {
 test('get of empty db', () => {
     expect(db.get('a')).toBeNull
 })
+
+test('get key not in db', () => {
+    db.set('a', 123)
+    expect(db.get('b')).toBeNull
+})
+
+test('get key with multiple entries db', () => {
+    db.set('a', 123)
+    db.set('b', 4)
+    db.set('A', 5)
+    console.log('----> ' + db.get('b'))
+    expect(db.get('b')).toEqual(4)
+})

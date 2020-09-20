@@ -1,7 +1,9 @@
 
 const KEY_INDEX = 0
-const VALUE_INDX = 1
-const DELETE_LIST = 2
+const VALUE_INDEX = 1
+
+const ACTIVE = true
+const DELETED = false
 
 class InMemDB {
 
@@ -16,7 +18,7 @@ class InMemDB {
         // use a value Map to make Count sub O(logn)
         this.valueMap = new Map()
         this.transactions = [
-            [this.keyMap, this.valueMap, []]
+            [this.keyMap, this.valueMap]
         ]
     }
 
@@ -26,43 +28,42 @@ class InMemDB {
 
     set(key, value) {
         // first add key
-        const [keyDB, valueDB, deleteList] = this.transactions[0]
-        keyDB.set(key, value)
+        const [keyDB, valueDB] = this.transactions[0]
+        keyDB.set(key, [value, ACTIVE])
         // then add value
         const listOfKeys = valueDB.get(key) || []
         if (listOfKeys.indexOf(key) < 1) {
-            listOfKeys.push(key)
+            listOfKeys.push([key, ACTIVE])
         }
         valueDB.set(value, listOfKeys)
-
-        // if this key is in the delete list remove it as it now has
-        // a set during the same transaction
-        const updatedDeleteList = deleteList.filter((val) => val !== key)
-        this.transactions[0][DELETE_LIST] = updatedDeleteList
         console.log(this.transactions[0])
     }
 
     get(key) {
+        const RESULT_ACTIVE_INDEX = 1
+        const RESULT_VALUE_INDEX = 0
         // work through transactions; the transactions won't have the
         // entire dataset so we'll first check the current transaction
-        // for a value, otherwise check if it was deleted this transaction,
+        // for an value then check if its ACTIVE or DELETED
         // otherwise go to next transaction and repeat
         console.log('-- getting ' + key)
         let result = null
         for (let index = 0; index < this.transactions.length; index++) {
-            const [keyDB, valueDB, deleteList] = this.transactions[index]
-            console.log({ keyDB, valueDB, deleteList })
+            const [keyDB, valueDB] = this.transactions[index]
+            console.log({ keyDB, valueDB })
             const value = keyDB.get(key)
+            console.log(value)
             if (value) {
                 result = value
                 break;
             }
-            // not found in upserts
-            if (deleteList.indexOf(key) > -1) {
-                break;
-            }
         }
-        return result
+        const x = result && result[RESULT_ACTIVE_INDEX] ? result[RESULT_VALUE_INDEX] : null
+        // console.log('result: ' + result)
+        // console.log(result)
+        // console.log('result[active]: ' + result[RESULT_ACTIVE_INDEX] + " :: " + result[RESULT_VALUE_INDEX] + ' --- ' + x)
+
+        return x
     }
 
     startTransaction() {
