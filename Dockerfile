@@ -79,4 +79,4 @@ ENV NODE_ENV=production
 
 RUN npm audit
 
-ENTRYPOINT ["node", "./index.js"]
+ENTRYPOINT ["node", "./src/index.js"]
