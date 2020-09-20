@@ -2,6 +2,7 @@
 const KEY_INDEX = 0
 const VALUE_INDEX = 1
 
+const ACTIVE_INDEX = 1
 const ACTIVE = true
 const DELETED = false
 
@@ -51,33 +52,22 @@ class InMemDB {
     }
 
     get(key) {
-        const RESULT_ACTIVE_INDEX = 1
+        const RESULT_ACTIVE_INDEX = ACTIVE_INDEX
         const RESULT_VALUE_INDEX = 0
-        // work through transactions; the transactions won't have the
-        // entire dataset so we'll first check the current transaction
-        // for an value then check if its ACTIVE or DELETED
-        // otherwise go to next transaction and repeat
-        console.log('-- getting ' + key)
-        console.log(this.transactions)
-        let result = null
-        console.log(this.transactions.length - 1)
-        for (let index = this.transactions.length - 1; index >= 0; index--) {
-            console.log('index: ' + index)
-            const [keyDB, valueDB] = this.transactions[index]
-            console.log({ keyDB, valueDB })
-            const value = keyDB.get(key)
-            console.log(value)
-            if (value) {
-                result = value
-                break;
-            }
-        }
+        const result = this._getFullRecord(key)
         const x = result && result[RESULT_ACTIVE_INDEX] ? result[RESULT_VALUE_INDEX] : null
         // console.log('result: ' + result)
         // console.log(result)
         // console.log('result[active]: ' + result[RESULT_ACTIVE_INDEX] + " :: " + result[RESULT_VALUE_INDEX] + ' --- ' + x)
 
         return x
+    }
+
+    remove(key) {
+        const result = this._getFullRecord(key)
+        if (result) {
+            result[ACTIVE_INDEX] = false
+        }
     }
 
     startTransaction() {
@@ -103,6 +93,30 @@ class InMemDB {
 
     count(value) {
 
+    }
+
+
+    _getFullRecord(key) {
+        // work through transactions; the transactions won't have the
+        // entire dataset so we'll first check the current transaction
+        // for an value then check if its ACTIVE or DELETED
+        // otherwise go to next transaction and repeat
+        console.log('-- getting ' + key)
+        console.log(this.transactions)
+        let result = null
+        console.log(this.transactions.length - 1)
+        for (let index = this.transactions.length - 1; index >= 0; index--) {
+            console.log('index: ' + index)
+            const [keyDB, valueDB] = this.transactions[index]
+            console.log({ keyDB, valueDB })
+            const value = keyDB.get(key)
+            console.log(value)
+            if (value) {
+                result = value
+                break;
+            }
+        }
+        return result
     }
 
 }

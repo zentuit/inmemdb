@@ -70,3 +70,18 @@ test('rollback multiple levels', () => {
     expect(db.get('a')).toEqual(123)
 })
 
+test('remove', () => {
+    db.set('a', 1)
+    expect(db.get('a')).toEqual(1)
+    db.remove('a')
+    expect(db.get('a')).toBeNull
+})
+
+test('remove and readd in same transaction', () => {
+    db.set('a', 1)
+    expect(db.get('a')).toEqual(1)
+    db.remove('a')
+    expect(db.get('a')).toBeNull
+    db.set('a', 1)
+    expect(db.get('a')).toEqual(1)
+})
