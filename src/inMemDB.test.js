@@ -29,7 +29,6 @@ test('get key with multiple entries db', () => {
     db.set('a', 123)
     db.set('b', 4)
     db.set('A', 5)
-    console.log('----> ' + db.get('b'))
     expect(db.get('b')).toEqual(4)
 })
 
@@ -200,4 +199,53 @@ test('example 1', () => {
     expect(db.count('baz')).toEqual(1)
     expect(db.get('b')).toEqual('baz')
     expect(db.get('B')).toBeNull
+})
+
+test('example 2', () => {
+    db.set('a', 'foo')
+    db.set('a', 'foo')
+    expect(db.count('foo')).toEqual(1)
+    expect(db.get('a')).toEqual('foo')
+    db.remove('a')
+    expect(db.get('a')).toBeNull
+    expect(db.count('foo')).toEqual(0)
+})
+
+test('example 3', () => {
+    db.startTransaction()
+    db.set('a', 'foo')
+    expect(db.get('a')).toEqual('foo')
+    db.startTransaction()
+    db.set('a', 'bar')
+    expect(db.get('a')).toEqual('bar')
+    db.set('a', 'baz')
+    db.rollbackTransaction()
+    expect(db.get('a')).toEqual('foo')
+    db.rollbackTransaction()
+    expect(db.get('a')).toBeNull
+})
+
+test('example 4', () => {
+    db.set('a', 'foo')
+    db.set('b', 'baz')
+    db.startTransaction()
+    expect(db.get('a')).toEqual('foo')
+    db.set('a', 'bar')
+    expect(db.count('bar')).toEqual(1)
+    expect(db.count('foo')).toEqual(0)
+    db.startTransaction()
+    expect(db.count('bar')).toEqual(1)
+    db.remove('a')
+    expect(db.get('a')).toBeNull
+    expect(db.count('bar')).toEqual(0)
+    db.rollbackTransaction()
+    expect(db.get('a')).toEqual('bar')
+    expect(db.count('bar')).toEqual(1)
+    expect(db.count('foo')).toEqual(0)
+    db.commitTransaction()
+    expect(db.get('a')).toEqual('bar')
+    expect(db.get('b')).toEqual('baz')
+    expect(db.count('bar')).toEqual(1)
+    expect(db.count('baz')).toEqual(1)
+    expect(db.count('foo')).toEqual(0)
 })
