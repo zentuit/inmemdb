@@ -26,9 +26,18 @@ class InMemDB {
         return this.transactions.length > 1
     }
 
+    last() {
+        return this.transactions.length - 1
+    }
+
     set(key, value) {
         // first add key
-        const [keyDB, valueDB] = this.transactions[0]
+        console.log('%%%%%%')
+        console.log('all: ')
+        console.log(this.transactions)
+        console.log(this.transactions[this.last()])
+        console.log('...........')
+        const [keyDB, valueDB] = this.transactions[this.last()]
         keyDB.set(key, [value, ACTIVE])
         // then add value
         const listOfKeys = valueDB.get(key) || []
@@ -36,7 +45,9 @@ class InMemDB {
             listOfKeys.push([key, ACTIVE])
         }
         valueDB.set(value, listOfKeys)
-        console.log(this.transactions[0])
+        console.log(this.transactions)
+        console.log(this.transactions[this.last()])
+        console.log('..... %%%%%%')
     }
 
     get(key) {
@@ -47,8 +58,11 @@ class InMemDB {
         // for an value then check if its ACTIVE or DELETED
         // otherwise go to next transaction and repeat
         console.log('-- getting ' + key)
+        console.log(this.transactions)
         let result = null
-        for (let index = 0; index < this.transactions.length; index++) {
+        console.log(this.transactions.length - 1)
+        for (let index = this.transactions.length - 1; index >= 0; index--) {
+            console.log('index: ' + index)
             const [keyDB, valueDB] = this.transactions[index]
             console.log({ keyDB, valueDB })
             const value = keyDB.get(key)
@@ -67,12 +81,13 @@ class InMemDB {
     }
 
     startTransaction() {
+        this.transactions.push([new Map(), new Map()])
 
     }
 
     commitTransaction() {
-        // work backwards through transactions
-        for (let index = this.transactions.length - 1; index < 0; index--) {
+        // work through transactions
+        for (let index = this.transactions.length - 1; index >= 0; index--) {
             const [keyDB, valueDB, deleteList] = this.transactions[index]
             
         }
@@ -82,6 +97,8 @@ class InMemDB {
         if (!this.isInTransaction()) {
             throw TRANSACTION_NOT_FOUND
         }
+        // remove maps at end
+        this.transactions.pop()
     }
 
     count(value) {

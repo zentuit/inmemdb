@@ -33,8 +33,40 @@ test('get key with multiple entries db', () => {
     expect(db.get('b')).toEqual(4)
 })
 
+test('startTransaction adds to transaction list', () => {
+    db.startTransaction()
+    expect(db.transactions.length).toEqual(2)
+})
+
 test('rollback when not in transaction throws error', () => {
     expect(() => {
         db.rollbackTransaction()
     }).toThrow(inMemDB.TransactionError)
 })
+
+test('rollback one level', () => {
+    db.set('a', 123)
+    db.startTransaction()
+    db.set('a', 456)
+    expect(db.get('a')).toEqual(456)
+    db.rollbackTransaction()
+    expect(db.get('a')).toEqual(123)
+})
+
+test('rollback multiple levels', () => {
+    db.set('a', 123)
+    db.startTransaction()
+    db.set('a', 456)
+    db.startTransaction()
+    db.set('a', 789)
+    db.startTransaction()
+    db.set('a', 10)
+    expect(db.get('a')).toEqual(10)
+    db.rollbackTransaction()
+    expect(db.get('a')).toEqual(789)
+    db.rollbackTransaction()
+    expect(db.get('a')).toEqual(456)
+    db.rollbackTransaction()
+    expect(db.get('a')).toEqual(123)
+})
+
