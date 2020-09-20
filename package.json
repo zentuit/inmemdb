@@ -2,10 +2,13 @@
   "name": "inmemdb",
   "version": "1.0.0",
   "description": "Demo in memory database",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Tom Jenkins",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.4.2"
+  }
 }

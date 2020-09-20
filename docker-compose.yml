@@ -1,0 +1,9 @@
+version: '2.4'
+
+services: 
+    inmemdb:
+        build: 
+            context: .
+            target: dev
+        volumes: 
+            - ./src:/node/app/src
