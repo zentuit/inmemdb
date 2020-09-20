@@ -1,0 +1,1452 @@
+
+> inmemdb@1.0.0 test /node
+> jest
+
+[1m[2mDetermining test suites to run...[22m[22m[999D[K
+[K[1A
+[0m[7m[33m[1m RUNS [22m[39m[27m[0m [1m...[22m
+[K[1A[K[1A[0m[7m[1m[31m FAIL [39m[22m[27m[0m [2mapp/src/[22m[1minMemDB.test.js[22m
+
+[0m[7m[33m[1m RUNS [22m[39m[27m[0m [1m...[22m
+[K[1A[K[1A  [32m✓[39m [2mcommit with adds and removes transactions (126 ms)[22m
+
+[0m[7m[33m[1m RUNS [22m[39m[27m[0m [1m...[22m
+[K[1A[K[1A  [31m✕[39m [2mexample 1 (47 ms)[22m
+
+[0m[7m[33m[1m RUNS [22m[39m[27m[0m [1m...[22m
+[K[1A[K[1A
+
+[0m[7m[33m[1m RUNS [22m[39m[27m[0m [1m...[22m
+[K[1A[K[1A[1m[31m  [1m● [22m[1mexample 1[39m[22m
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+    Expected: [32m0[39m
+    Received: [31m1[39m
+[2m[22m
+[2m    [0m [90m 197 | [39m    expect(db[33m.[39mcount([32m'foo'[39m))[33m.[39mtoEqual([35m1[39m)[0m[22m
+[2m    [0m [90m 198 | [39m    db[33m.[39mset([32m'b'[39m[33m,[39m [32m'baz'[39m)[0m[22m
+[2m    [0m[31m[1m>[22m[2m[39m[90m 199 | [39m    expect(db[33m.[39mcount([32m'foo'[39m))[33m.[39mtoEqual([35m0[39m)[0m[22m
+[2m    [0m [90m     | [39m                            [31m[1m^[22m[2m[39m[0m[22m
+[2m    [0m [90m 200 | [39m    expect(db[33m.[39mcount([32m'baz'[39m))[33m.[39mtoEqual([35m1[39m)[0m[22m
+[2m    [0m [90m 201 | [39m    expect(db[33m.[39mget([32m'b'[39m))[33m.[39mtoEqual([32m'baz'[39m)[0m[22m
+[2m    [0m [90m 202 | [39m    expect(db[33m.[39mget([32m'B'[39m))[33m.[39mtoBeNull[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36mapp/src/inMemDB.test.js[39m[0m[2m:199:29)[22m[2m[22m
+
+
+[0m[7m[33m[1m RUNS [22m[39m[27m[0m [1m...[22m
+[K[1A[K[1A[999D[K  [2mconsole.log[22m
+    %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:33:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    all:
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:34:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      { keyDB: Map(0) {}, valueDB: Map(0) {} }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:35:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    { keyDB: Map(0) {}, valueDB: Map(0) {} }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:36:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ...........
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:37:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      { keyDB: Map(1) { 'a' => [Object] }, valueDB: Map(0) {} }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    1
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:46:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(1) { 'a' => { value: 123, active: true } }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:47:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(1) { 123 => [ { key: 'a', active: true } ] }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:48:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ..... %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:49:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      { keyDB: Map(0) {}, valueDB: Map(0) {} }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    2
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    key ==> false
+[2m[22m
+[2m      [2mat InMemDB.remove ([22m[2mapp/src/inMemDB.js[2m:65:21)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      { keyDB: Map(0) {}, valueDB: Map(0) {} }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    2
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    listOfKeys ==> [object Object]
+[2m[22m
+[2m      [2mat InMemDB.remove ([22m[2mapp/src/inMemDB.js[2m:67:21)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    keyIndex ==> 0
+[2m[22m
+[2m      [2mat InMemDB.remove ([22m[2mapp/src/inMemDB.js[2m:69:21)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:33:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    all:
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:34:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      { keyDB: Map(0) {}, valueDB: Map(0) {} }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:35:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    { keyDB: Map(0) {}, valueDB: Map(0) {} }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:36:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ...........
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:37:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      { keyDB: Map(1) { 'b' => [Object] }, valueDB: Map(0) {} }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    2
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      {
+        keyDB: Map(1) { 'b' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:46:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(1) { 'b' => { value: 123, active: true } }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:47:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(1) {
+      123 => [ { key: 'a', active: false }, { key: 'b', active: true } ]
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:48:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ..... %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:49:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:33:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    all:
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:34:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      {
+        keyDB: Map(1) { 'b' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:35:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    {
+      keyDB: Map(1) { 'b' => { value: 123, active: true } },
+      valueDB: Map(1) { 123 => [ [Object], [Object] ] }
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:36:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ...........
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:37:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      {
+        keyDB: Map(2) { 'b' => [Object], 'c' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    2
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      {
+        keyDB: Map(2) { 'b' => [Object], 'c' => [Object] },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:46:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(2) {
+      'b' => { value: 123, active: true },
+      'c' => { value: 3, active: true }
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:47:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(2) {
+      123 => [ { key: 'a', active: false }, { key: 'b', active: true } ],
+      3 => [ { key: 'c', active: true } ]
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:48:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ..... %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:49:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:33:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    all:
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:34:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      {
+        keyDB: Map(2) { 'b' => [Object], 'c' => [Object] },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:35:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    {
+      keyDB: Map(2) {
+        'b' => { value: 123, active: true },
+        'c' => { value: 3, active: true }
+      },
+      valueDB: Map(2) { 123 => [ [Object], [Object] ], 3 => [ [Object] ] }
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:36:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ...........
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:37:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      {
+        keyDB: Map(3) { 'b' => [Object], 'c' => [Object], 'e' => [Object] },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    2
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      {
+        keyDB: Map(3) { 'b' => [Object], 'c' => [Object], 'e' => [Object] },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:46:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(3) {
+      'b' => { value: 123, active: true },
+      'c' => { value: 3, active: true },
+      'e' => { value: 123, active: true }
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:47:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(2) {
+      123 => [
+        { key: 'a', active: false },
+        { key: 'b', active: true },
+        { key: 'e', active: true }
+      ],
+      3 => [ { key: 'c', active: true } ]
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:48:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ..... %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:49:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:33:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    all:
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:34:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      {
+        keyDB: Map(3) { 'b' => [Object], 'c' => [Object], 'e' => [Object] },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      },
+      { keyDB: Map(0) {}, valueDB: Map(0) {} }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:35:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    { keyDB: Map(0) {}, valueDB: Map(0) {} }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:36:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ...........
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:37:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      {
+        keyDB: Map(3) { 'b' => [Object], 'c' => [Object], 'e' => [Object] },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      },
+      { keyDB: Map(1) { 'a' => [Object] }, valueDB: Map(0) {} }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    3
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      {
+        keyDB: Map(3) { 'b' => [Object], 'c' => [Object], 'e' => [Object] },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:46:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(1) { 'a' => { value: 123, active: true } }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:47:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(1) {
+      123 => [
+        { key: 'a', active: false },
+        { key: 'b', active: true },
+        { key: 'e', active: true },
+        { key: 'a', active: true }
+      ]
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:48:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ..... %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:49:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:33:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    all:
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:34:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      {
+        keyDB: Map(3) { 'b' => [Object], 'c' => [Object], 'e' => [Object] },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:35:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    {
+      keyDB: Map(1) { 'a' => { value: 123, active: true } },
+      valueDB: Map(1) { 123 => [ [Object], [Object], [Object], [Object] ] }
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:36:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ...........
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:37:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      {
+        keyDB: Map(3) { 'b' => [Object], 'c' => [Object], 'e' => [Object] },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      },
+      {
+        keyDB: Map(2) { 'a' => [Object], 'd' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    3
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      {
+        keyDB: Map(3) { 'b' => [Object], 'c' => [Object], 'e' => [Object] },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      },
+      {
+        keyDB: Map(2) { 'a' => [Object], 'd' => [Object] },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:46:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(2) {
+      'a' => { value: 123, active: true },
+      'd' => { value: 3, active: true }
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:47:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(2) {
+      123 => [
+        { key: 'a', active: false },
+        { key: 'b', active: true },
+        { key: 'e', active: true },
+        { key: 'a', active: true }
+      ],
+      3 => [ { key: 'c', active: true }, { key: 'd', active: true } ]
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:48:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ..... %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:49:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      {
+        keyDB: Map(3) { 'b' => [Object], 'c' => [Object], 'e' => [Object] },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      },
+      {
+        keyDB: Map(2) { 'a' => [Object], 'd' => [Object] },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    3
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    key ==> false
+[2m[22m
+[2m      [2mat InMemDB.remove ([22m[2mapp/src/inMemDB.js[2m:65:21)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { keyDB: Map(0) {}, valueDB: Map(0) {} },
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 123 => [Array] }
+      },
+      {
+        keyDB: Map(3) { 'b' => [Object], 'c' => [Object], 'e' => [Object] },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      },
+      {
+        keyDB: Map(2) { 'a' => [Object], 'd' => [Object] },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    3
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    listOfKeys ==> [object Object],[object Object],[object Object],[object Object]
+[2m[22m
+[2m      [2mat InMemDB.remove ([22m[2mapp/src/inMemDB.js[2m:67:21)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    keyIndex ==> 2
+[2m[22m
+[2m      [2mat InMemDB.remove ([22m[2mapp/src/inMemDB.js[2m:69:21)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    _______
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:90:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    { keyDB: Map(0) {}, valueDB: Map(0) {} }
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:91:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(0) {}
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:92:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(0) {}
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:93:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(2) {
+      'a' => { value: 123, active: true },
+      'd' => { value: 3, active: true }
+    }
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:94:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(2) {
+      123 => [
+        { key: 'a', active: false },
+        { key: 'b', active: true },
+        { key: 'e', active: false },
+        { key: 'a', active: true }
+      ],
+      3 => [ { key: 'c', active: true }, { key: 'd', active: true } ]
+    }
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:95:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    _______
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:90:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    {
+      keyDB: Map(2) {
+        'a' => { value: 123, active: true },
+        'd' => { value: 3, active: true }
+      },
+      valueDB: Map(2) {
+        123 => [ [Object], [Object], [Object], [Object] ],
+        3 => [ [Object], [Object] ]
+      }
+    }
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:91:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(2) {
+      'a' => { value: 123, active: true },
+      'd' => { value: 3, active: true }
+    }
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:92:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(2) {
+      123 => [
+        { key: 'a', active: false },
+        { key: 'b', active: true },
+        { key: 'e', active: false },
+        { key: 'a', active: true }
+      ],
+      3 => [ { key: 'c', active: true }, { key: 'd', active: true } ]
+    }
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:93:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(3) {
+      'b' => { value: 123, active: true },
+      'c' => { value: 3, active: true },
+      'e' => { value: 123, active: false }
+    }
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:94:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(2) {
+      123 => [
+        { key: 'a', active: false },
+        { key: 'b', active: true },
+        { key: 'e', active: false },
+        { key: 'a', active: true }
+      ],
+      3 => [ { key: 'c', active: true }, { key: 'd', active: true } ]
+    }
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:95:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    _______
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:90:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    {
+      keyDB: Map(5) {
+        'a' => { value: 123, active: true },
+        'd' => { value: 3, active: true },
+        'b' => { value: 123, active: true },
+        'c' => { value: 3, active: true },
+        'e' => { value: 123, active: false }
+      },
+      valueDB: Map(2) {
+        123 => [ [Object], [Object], [Object], [Object] ],
+        3 => [ [Object], [Object] ]
+      }
+    }
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:91:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(5) {
+      'a' => { value: 123, active: true },
+      'd' => { value: 3, active: true },
+      'b' => { value: 123, active: true },
+      'c' => { value: 3, active: true },
+      'e' => { value: 123, active: false }
+    }
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:92:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(2) {
+      123 => [
+        { key: 'a', active: false },
+        { key: 'b', active: true },
+        { key: 'e', active: false },
+        { key: 'a', active: true }
+      ],
+      3 => [ { key: 'c', active: true }, { key: 'd', active: true } ]
+    }
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:93:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(1) { 'a' => { value: 123, active: false } }
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:94:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(1) {
+      123 => [
+        { key: 'a', active: false },
+        { key: 'b', active: true },
+        { key: 'e', active: false },
+        { key: 'a', active: true }
+      ]
+    }
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:95:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    _______
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:90:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    {
+      keyDB: Map(5) {
+        'a' => { value: 123, active: false },
+        'd' => { value: 3, active: true },
+        'b' => { value: 123, active: true },
+        'c' => { value: 3, active: true },
+        'e' => { value: 123, active: false }
+      },
+      valueDB: Map(2) {
+        123 => [ [Object], [Object], [Object], [Object] ],
+        3 => [ [Object], [Object] ]
+      }
+    }
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:91:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(5) {
+      'a' => { value: 123, active: false },
+      'd' => { value: 3, active: true },
+      'b' => { value: 123, active: true },
+      'c' => { value: 3, active: true },
+      'e' => { value: 123, active: false }
+    }
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:92:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(2) {
+      123 => [
+        { key: 'a', active: false },
+        { key: 'b', active: true },
+        { key: 'e', active: false },
+        { key: 'a', active: true }
+      ],
+      3 => [ { key: 'c', active: true }, { key: 'd', active: true } ]
+    }
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:93:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(0) {}
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:94:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(0) {}
+[2m[22m
+[2m      [2mat reduceRight ([22m[2mapp/src/inMemDB.js[2m:95:21)[22m[2m[22m
+[2m          at Array.reduceRight (<anonymous>)[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(5) {
+          'a' => [Object],
+          'd' => [Object],
+          'b' => [Object],
+          'c' => [Object],
+          'e' => [Object]
+        },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    0
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    result: [object Object]
+[2m[22m
+[2m      [2mat InMemDB.get ([22m[2mapp/src/inMemDB.js[2m:54:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(5) {
+          'a' => [Object],
+          'd' => [Object],
+          'b' => [Object],
+          'c' => [Object],
+          'e' => [Object]
+        },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    0
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    result: [object Object]
+[2m[22m
+[2m      [2mat InMemDB.get ([22m[2mapp/src/inMemDB.js[2m:54:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(5) {
+          'a' => [Object],
+          'd' => [Object],
+          'b' => [Object],
+          'c' => [Object],
+          'e' => [Object]
+        },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    0
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [ { key: 'c', active: true }, { key: 'd', active: true } ]
+[2m[22m
+[2m      [2mat InMemDB.count ([22m[2mapp/src/inMemDB.js[2m:114:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+     ... count: activeKeys = [object Object],[object Object]
+[2m[22m
+[2m      [2mat InMemDB.count ([22m[2mapp/src/inMemDB.js[2m:120:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(5) {
+          'a' => [Object],
+          'd' => [Object],
+          'b' => [Object],
+          'c' => [Object],
+          'e' => [Object]
+        },
+        valueDB: Map(2) { 123 => [Array], 3 => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    0
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      { key: 'a', active: false },
+      { key: 'b', active: true },
+      { key: 'e', active: false },
+      { key: 'a', active: true }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.count ([22m[2mapp/src/inMemDB.js[2m:114:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+     ... count: activeKeys = [object Object],[object Object]
+[2m[22m
+[2m      [2mat InMemDB.count ([22m[2mapp/src/inMemDB.js[2m:120:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [ { keyDB: Map(0) {}, valueDB: Map(0) {} } ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    0
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    result: null
+[2m[22m
+[2m      [2mat InMemDB.get ([22m[2mapp/src/inMemDB.js[2m:54:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:33:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    all:
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:34:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [ { keyDB: Map(0) {}, valueDB: Map(0) {} } ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:35:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    { keyDB: Map(0) {}, valueDB: Map(0) {} }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:36:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ...........
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:37:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [ { keyDB: Map(1) { 'a' => [Object] }, valueDB: Map(0) {} } ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    0
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 'foo' => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:46:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(1) { 'a' => { value: 'foo', active: true } }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:47:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(1) { 'foo' => [ { key: 'a', active: true } ] }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:48:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ..... %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:49:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:33:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    all:
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:34:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(1) { 'a' => [Object] },
+        valueDB: Map(1) { 'foo' => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:35:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    {
+      keyDB: Map(1) { 'a' => { value: 'foo', active: true } },
+      valueDB: Map(1) { 'foo' => [ [Object] ] }
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:36:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ...........
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:37:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(2) { 'a' => [Object], 'b' => [Object] },
+        valueDB: Map(1) { 'foo' => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    0
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(2) { 'a' => [Object], 'b' => [Object] },
+        valueDB: Map(1) { 'foo' => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:46:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(2) {
+      'a' => { value: 'foo', active: true },
+      'b' => { value: 'foo', active: true }
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:47:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(1) {
+      'foo' => [ { key: 'a', active: true }, { key: 'b', active: true } ]
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:48:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ..... %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:49:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(2) { 'a' => [Object], 'b' => [Object] },
+        valueDB: Map(1) { 'foo' => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    0
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [ { key: 'a', active: true }, { key: 'b', active: true } ]
+[2m[22m
+[2m      [2mat InMemDB.count ([22m[2mapp/src/inMemDB.js[2m:114:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+     ... count: activeKeys = [object Object],[object Object]
+[2m[22m
+[2m      [2mat InMemDB.count ([22m[2mapp/src/inMemDB.js[2m:120:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(2) { 'a' => [Object], 'b' => [Object] },
+        valueDB: Map(1) { 'foo' => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    0
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    null
+[2m[22m
+[2m      [2mat InMemDB.count ([22m[2mapp/src/inMemDB.js[2m:114:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(2) { 'a' => [Object], 'b' => [Object] },
+        valueDB: Map(1) { 'foo' => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    0
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    key ==> false
+[2m[22m
+[2m      [2mat InMemDB.remove ([22m[2mapp/src/inMemDB.js[2m:65:21)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(2) { 'a' => [Object], 'b' => [Object] },
+        valueDB: Map(1) { 'foo' => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    0
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    listOfKeys ==> [object Object],[object Object]
+[2m[22m
+[2m      [2mat InMemDB.remove ([22m[2mapp/src/inMemDB.js[2m:67:21)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    keyIndex ==> 0
+[2m[22m
+[2m      [2mat InMemDB.remove ([22m[2mapp/src/inMemDB.js[2m:69:21)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(2) { 'a' => [Object], 'b' => [Object] },
+        valueDB: Map(1) { 'foo' => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    0
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [ { key: 'a', active: false }, { key: 'b', active: true } ]
+[2m[22m
+[2m      [2mat InMemDB.count ([22m[2mapp/src/inMemDB.js[2m:114:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+     ... count: activeKeys = [object Object]
+[2m[22m
+[2m      [2mat InMemDB.count ([22m[2mapp/src/inMemDB.js[2m:120:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:33:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    all:
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:34:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(2) { 'a' => [Object], 'b' => [Object] },
+        valueDB: Map(1) { 'foo' => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:35:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    {
+      keyDB: Map(2) {
+        'a' => { value: 'foo', active: false },
+        'b' => { value: 'foo', active: true }
+      },
+      valueDB: Map(1) { 'foo' => [ [Object], [Object] ] }
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:36:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ...........
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:37:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(2) { 'a' => [Object], 'b' => [Object] },
+        valueDB: Map(1) { 'foo' => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    0
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(2) { 'a' => [Object], 'b' => [Object] },
+        valueDB: Map(2) { 'foo' => [Array], 'baz' => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:46:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(2) {
+      'a' => { value: 'foo', active: false },
+      'b' => { value: 'baz', active: true }
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:47:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    Map(2) {
+      'foo' => [ { key: 'a', active: false }, { key: 'b', active: true } ],
+      'baz' => [ { key: 'b', active: true } ]
+    }
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:48:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    ..... %%%%%%
+[2m[22m
+[2m      [2mat InMemDB.set ([22m[2mapp/src/inMemDB.js[2m:49:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [
+      {
+        keyDB: Map(2) { 'a' => [Object], 'b' => [Object] },
+        valueDB: Map(2) { 'foo' => [Array], 'baz' => [Array] }
+      }
+    ]
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:131:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    0
+[2m[22m
+[2m      [2mat InMemDB._getFullRecord ([22m[2mapp/src/inMemDB.js[2m:133:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+    [ { key: 'a', active: false }, { key: 'b', active: true } ]
+[2m[22m
+[2m      [2mat InMemDB.count ([22m[2mapp/src/inMemDB.js[2m:114:17)[22m[2m[22m
+
+[999D[K  [2mconsole.log[22m
+     ... count: activeKeys = [object Object]
+[2m[22m
+[2m      [2mat InMemDB.count ([22m[2mapp/src/inMemDB.js[2m:120:17)[22m[2m[22m
+
+
+[0m[7m[33m[1m RUNS [22m[39m[27m[0m [1m...[22m
+[K[1A[K[1A[999D[K[1mTest Suites: [22m[1m[31m1 failed[39m[22m, 1 total
+[1mTests:       [22m[1m[31m1 failed[39m[22m, [1m[32m1 passed[39m[22m, 2 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        1.168 s
+[2mRan all test suites[22m[2m.[22m
+[37;40mnpm[0m [0m[31;40mERR![0m[35m[0m Test failed.  See above for more details.
+[0m
