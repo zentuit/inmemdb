@@ -1,7 +1,9 @@
+const VALUEDB_INDEX = 1
 
-const KEY_INDEX = 0
-const VALUE_INDX = 1
-const DELETE_LIST = 2
+const ACTIVE = true
+const DELETED = false
+
+const USE_VALUE_DB = true
 
 class InMemDB {
 
@@ -12,11 +14,9 @@ class InMemDB {
         // vs Red-Black Tree's O(logn) which is the upper limit
         // we should do some large scale performance testing to see
         // when the rehashing is problematic
-        this.keyMap = new Map()
         // use a value Map to make Count sub O(logn)
-        this.valueMap = new Map()
         this.transactions = [
-            [this.keyMap, this.valueMap, []]
+            { keyDB: new Map(), valueDB: new Map() }
         ]
     }
 
@@ -24,69 +24,127 @@ class InMemDB {
         return this.transactions.length > 1
     }
 
-    set(key, value) {
-        // first add key
-        const [keyDB, valueDB, deleteList] = this.transactions[0]
-        keyDB.set(key, value)
-        // then add value
-        const listOfKeys = valueDB.get(key) || []
-        if (listOfKeys.indexOf(key) < 1) {
-            listOfKeys.push(key)
-        }
-        valueDB.set(value, listOfKeys)
+    last() {
+        return this.transactions.length - 1
+    }
 
-        // if this key is in the delete list remove it as it now has
-        // a set during the same transaction
-        const updatedDeleteList = deleteList.filter((val) => val !== key)
-        this.transactions[0][DELETE_LIST] = updatedDeleteList
-        console.log(this.transactions[0])
+    set(key, value) {
+        const { keyDB, valueDB } = this.transactions[this.last()]
+
+        // we need to update the previous value so we can keep the valuedb up to date
+        const originalValue = this._getFullRecord(key)
+        if (originalValue && originalValue.active) {
+            this._decrementKeyCount(originalValue.value)
+        }
+
+        // now update the key and value maps
+        keyDB.set(key, { value, active:ACTIVE })
+        // then add value
+        this._incrementKeyCount(value)
     }
 
     get(key) {
+        const result = this._getFullRecord(key)
+        return result && result.active ? result.value : null
+    }
+
+    remove(key) {
+        // we have 2 options, we have this key in current transaction or not
+        // if it is we flip the flag otherwise we see if its in previous
+        // transactions and decrement the count (if exists)
+        const { keyDB, valueDB } = this.transactions[this.last()]
+        const result = keyDB.get(key)
+        if (result) {
+            result.active = false
+            this._decrementKeyCount(result.value)
+        } else {
+            const prevResults = this._getFullRecord(key)
+            if (prevResults && prevResults.active) {
+                keyDB.set(key, { value: prevResults.value, active: DELETED })
+                this._decrementKeyCount(prevResults.value)
+            }
+        }
+    }
+
+    startTransaction() {
+        this.transactions.push({ keyDB: new Map(), valueDB: new Map() })
+
+    }
+
+    commitTransaction() {
+        if (!this.isInTransaction()) {
+            // skip out of any processing if we're not in a transaction
+            return
+        }
+
+        // reduce the transactions down to one set of maps
+        const merged = this.transactions.reduceRight((accum, { keyDB, valueDB }) => {
+            return {
+                keyDB: new Map([...keyDB, ...accum.keyDB]),
+                valueDB: new Map([...valueDB, ...accum.valueDB]),
+            }
+        }, { keyDB: new Map(), valueDB: new Map() })
+        this.transactions = [merged]
+    }
+
+    rollbackTransaction() {
+        if (!this.isInTransaction()) {
+            throw TRANSACTION_NOT_FOUND
+        }
+        // remove last transaction maps at end
+        this.transactions.pop()
+    }
+
+    count(value) {
+        const result = this._getFullRecord(value, USE_VALUE_DB)
+        return result || 0
+    }
+
+
+    _getFullRecord(key, useValueDB = false) {
         // work through transactions; the transactions won't have the
         // entire dataset so we'll first check the current transaction
-        // for a value, otherwise check if it was deleted this transaction,
-        // otherwise go to next transaction and repeat
-        console.log('-- getting ' + key)
+        // for an value otherwise go to next transaction and repeat
         let result = null
-        for (let index = 0; index < this.transactions.length; index++) {
-            const [keyDB, valueDB, deleteList] = this.transactions[index]
-            console.log({ keyDB, valueDB, deleteList })
-            const value = keyDB.get(key)
-            if (value) {
+        for (let index = this.transactions.length - 1; index >= 0; index--) {
+            const { keyDB, valueDB } = this.transactions[index]
+            const value = useValueDB ? valueDB.get(key) : keyDB.get(key)
+            if (!(value == null)) {
                 result = value
-                break;
-            }
-            // not found in upserts
-            if (deleteList.indexOf(key) > -1) {
                 break;
             }
         }
         return result
     }
 
-    startTransaction() {
-
+    _decrementKeyCount(value) {
+        let count = this._getFullRecord(value, USE_VALUE_DB)
+        this.transactions[this.last()].valueDB.set(value, --count)
     }
 
-    commitTransaction() {
-        // work backwards through transactions
-        for (let index = this.transactions.length - 1; index < 0; index--) {
-            const [keyDB, valueDB, deleteList] = this.transactions[index]
-            
-        }
-    }
-
-    rollbackTransaction() {
-
-    }
-
-    count(value) {
-
+    _incrementKeyCount(value) {
+        let count = this._getFullRecord(value, USE_VALUE_DB)
+        this.transactions[this.last()].valueDB.set(value, ++count)
     }
 
 }
 
+class TransactionError extends Error {
+    constructor(message) {
+        super(message)
+    }
+}
+
+class DatabaseError extends Error {
+    constructor(message) {
+        super(message)
+    }
+}
+
+const TRANSACTION_NOT_FOUND = new TransactionError('TRANSACTION NOT FOUND')
+
 module.exports = {
     InMemDB,
+    TransactionError,
+    DatabaseError,
 }
