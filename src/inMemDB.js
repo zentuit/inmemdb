@@ -55,8 +55,10 @@ class InMemDB {
         const { keyDB, valueDB } = this.transactions[this.last()]
         const result = keyDB.get(key)
         if (result) {
+            if (result.active) {
+                this._decrementKeyCount(result.value)
+            }
             result.active = false
-            this._decrementKeyCount(result.value)
         } else {
             const prevResults = this._getFullRecord(key)
             if (prevResults && prevResults.active) {
